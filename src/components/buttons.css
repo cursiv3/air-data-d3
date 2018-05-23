@@ -1,0 +1,46 @@
+.button-container {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  z-index: 6;
+  margin: 0;
+  padding: 0;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.county-button {
+  border-radius: 5px;
+  width: 130px;
+  text-align: center;
+  font-size: 22px;
+  background-color: rgb(238, 238, 238);
+  margin: 7px;
+  display: inline-table;
+}
+
+.county-button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.was-county {
+  color: orange;
+}
+
+.mul-county {
+  color: black;
+}
+
+.mar-county {
+  color: red;
+}
+
+.yam-county {
+  color: blue;
+}
+
+.cla-county {
+  color: green;
+}
