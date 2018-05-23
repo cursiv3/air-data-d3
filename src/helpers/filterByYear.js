@@ -2,7 +2,7 @@ import { filterByCounty } from "./filterByCountry";
 
 export const filterByYear = objArray => {
   var years = [];
-  objArray.map(obj => {
+  objArray.forEach(obj => {
     if (years.indexOf(obj.year) === -1) {
       years.push(obj.year);
     }

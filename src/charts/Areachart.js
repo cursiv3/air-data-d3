@@ -7,8 +7,7 @@ import {
   Legend,
   AreaChart,
   Area,
-  ResponsiveContainer,
-  Label
+  ResponsiveContainer
 } from "recharts";
 import "./charts.css";
 
@@ -30,6 +29,8 @@ class Areachart extends React.Component {
         break;
       case "Clackamas":
         fill = "green";
+        break;
+      default:
         break;
     }
     return (
