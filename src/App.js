@@ -9,7 +9,6 @@ class App extends Component {
     super();
 
     this.state = {
-      data: [],
       multnomah: [],
       washington: [],
       marion: [],
@@ -40,13 +39,10 @@ class App extends Component {
     var returnArray = data.map((_, idx) => {
       var obj = {};
       obj.measureName = data[idx][9];
-      obj.measureType = data[idx][10];
-      obj.stateAbr = data[idx][12];
       obj.state = data[idx][13];
       obj.county = data[idx][15];
       obj.year = data[idx][16];
       obj.value = data[idx][17];
-      obj.unit = data[idx][18];
       obj.unitName = data[idx][19];
       return obj;
     });
@@ -68,8 +64,21 @@ class App extends Component {
     };
   }
 
+  // =============================================================================
+
   render() {
     var data = this.state.multnomah;
+    var data2 = this.state.marion;
+
+    const getPercentData = objArray => {
+      return objArray.filter(obj => obj.unitName === "Percent");
+    };
+
+    const getMcgData = objArray => {
+      return objArray.filter(
+        obj => obj.unitName === "Micograms per cubic meter"
+      );
+    };
 
     const findDistinctYears = objArray => {
       var distinctYears = [];
@@ -82,38 +91,47 @@ class App extends Component {
     };
 
     const groupDataByYear = (objArray, yearArray) => {
-      let yearObj = {};
+      let yearObj = [];
       yearArray.forEach(year => {
-        let sameYear = objArray.filter(obj => obj.year === year);
-        yearObj[year] = sameYear;
+        let sameYear = objArray.filter(obj => obj.year === year)[0];
+        yearObj.push(sameYear);
       });
       return yearObj;
     };
 
-    var yearArr = findDistinctYears(data);
+    const combineCountyData = (
+      stateObj,
+      mcgDataFunc,
+      pctDataFunc,
+      distincYrsFunc,
+      grpByYrFunc
+    ) => {
+      var returnObj = {};
+      for (var key in stateObj) {
+        var pctData = pctDataFunc(stateObj[key]);
+        var mcgData = mcgDataFunc(stateObj[key]);
+        var distinctYears = distincYrsFunc(stateObj[key]);
+        var pctByYear = grpByYrFunc(pctData, distinctYears);
+        var mcgByYear = grpByYrFunc(mcgData, distinctYears);
 
-    return (
-      <div>
-        <button name="mult">Multnomah County</button>
-        <button name="wash">Washington County</button>
-        <button name="mari">Marion County</button>
-        <button name="yam">Yamhill County</button>
-        <button name="clac">Clackamas County</button>
-        <table>
-          <tbody>
-            {data.map(obj => (
-              <tr>
-                <td>{obj.state}</td>
-                <td>{obj.county}</td>
-                <td>{obj.year}</td>
-                <td>{obj.value}</td>
-                <td>{obj.unitName}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+        returnObj[key] = [pctByYear, mcgByYear];
+      }
+      return returnObj;
+    };
+
+    const formatChartData = countyDataObj => {
+      var years = dataByCounty.multnomah[0].map(val => val.year);
+    };
+
+    var dataByCounty = combineCountyData(
+      this.state,
+      getMcgData,
+      getPercentData,
+      findDistinctYears,
+      groupDataByYear
     );
+
+    return <div />;
   }
 }
 
