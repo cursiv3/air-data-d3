@@ -1,4 +1,4 @@
-import { filterByCounty } from "./filterByCountry";
+import { filterByCounty } from "./filterByCounty";
 
 export const filterByYear = objArray => {
   var years = [];
