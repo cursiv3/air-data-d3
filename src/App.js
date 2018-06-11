@@ -33,7 +33,7 @@ class App extends Component {
         var filtered = filterResults(res.data.data);
         var stateArray = createStateArray(filtered);
         var stateObj = filterByYear(stateArray);
-        this.setState(Object.assign({}, this.state, { data: stateObj }));
+        this.setState({ data: stateObj });
       })
       .then(data => {
         let chartData = formatChartData(this.state.data);
@@ -45,23 +45,18 @@ class App extends Component {
   onButtonClick(evt) {
     if (evt.target.id !== "do-nothing") {
       let name = evt.target.id;
-
-      this.setState(
-        Object.assign({}, this.state, {
-          areaChart: true,
-          focus: name
-        })
-      );
+      this.setState({
+        areaChart: true,
+        focus: name
+      });
     }
   }
 
   modalClose() {
-    this.setState(
-      Object.assign({}, this.state, {
-        areaChart: false,
-        focus: null
-      })
-    );
+    this.setState({
+      areaChart: false,
+      focus: null
+    });
   }
 
   render() {
