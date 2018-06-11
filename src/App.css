@@ -22,3 +22,25 @@ body,
   height: 100%;
   z-index: 1;
 }
+
+.data-loading-h1 {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: load-pulse;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes load-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}

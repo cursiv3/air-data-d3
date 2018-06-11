@@ -17,7 +17,8 @@ class App extends Component {
     this.state = {
       data: null,
       areaChart: false,
-      focus: null
+      focus: null,
+      isDataReceived: false
     };
     this.onButtonClick = this.onButtonClick.bind(this);
     this.modalClose = this.modalClose.bind(this);
@@ -35,7 +36,9 @@ class App extends Component {
         this.setState(Object.assign({}, this.state, { data: stateObj }));
       })
       .then(data => {
-        this.setState(formatChartData(this.state.data));
+        let chartData = formatChartData(this.state.data);
+        chartData.isDataReceived = true;
+        this.setState(chartData);
       });
   }
 
@@ -64,7 +67,11 @@ class App extends Component {
   render() {
     return (
       <div className="app-parent-container">
-        <Linechart data={this.state.percent} />
+        {this.state.isDataReceived ? (
+          <Linechart data={this.state.percent} />
+        ) : (
+          <h1 className="data-loading-h1">Loading...</h1>
+        )}
 
         {this.state.areaChart && (
           <div
