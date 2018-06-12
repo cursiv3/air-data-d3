@@ -11,7 +11,19 @@ import {
   Label
 } from "recharts";
 import "./charts.css";
-import LoadingChart from "./LoadingChart";
+
+const formatData = value => {
+  return `${parseFloat(value).toFixed(2)}%`;
+};
+
+const formatLabel = () => {
+  return (
+    <div>
+      Percentage of days with PM2.5 above Ambient Air Qualirt Standards
+      <hr />
+    </div>
+  );
+};
 
 class Linechart extends React.Component {
   render() {
@@ -74,7 +86,11 @@ class Linechart extends React.Component {
             />
           </YAxis>
           <Legend verticalAlign="top" />
-          <Tooltip offset={50} />
+          <Tooltip
+            offset={50}
+            formatter={formatData}
+            labelFormatter={formatLabel}
+          />
         </LineChart>
       </ResponsiveContainer>
     );
