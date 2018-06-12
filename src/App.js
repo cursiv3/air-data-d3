@@ -7,6 +7,7 @@ import { filterByYear } from "./helpers/filterByYear";
 import { createStateArray } from "./helpers/createStateArray";
 import { filterResults } from "./helpers/filterResults";
 import { formatChartData } from "./helpers/formatChartData";
+import LoadingChart from "./charts/LoadingChart";
 
 const axios = require("axios");
 
@@ -62,10 +63,16 @@ class App extends Component {
   render() {
     return (
       <div className="app-parent-container">
-        {this.state.isDataReceived ? (
-          <Linechart data={this.state.percent} />
-        ) : (
+        {!this.state.isDataReceived && (
           <h1 className="data-loading-h1">Loading...</h1>
+        )}
+        {this.state.isDataReceived ? (
+          <Linechart
+            data={this.state.percent}
+            isDataReceived={this.state.isDataReceived}
+          />
+        ) : (
+          <LoadingChart />
         )}
 
         {this.state.areaChart && (

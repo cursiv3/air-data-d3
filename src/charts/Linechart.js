@@ -11,6 +11,7 @@ import {
   Label
 } from "recharts";
 import "./charts.css";
+import LoadingChart from "./LoadingChart";
 
 class Linechart extends React.Component {
   render() {

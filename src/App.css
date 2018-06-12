@@ -31,6 +31,7 @@ body,
   animation: load-pulse;
   animation-duration: 2s;
   animation-iteration-count: infinite;
+  z-index: 2;
 }
 
 @keyframes load-pulse {
