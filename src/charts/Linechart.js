@@ -16,10 +16,10 @@ const formatData = value => {
   return `${parseFloat(value).toFixed(2)}%`;
 };
 
-const formatLabel = () => {
+const formatLabel = label => {
   return (
     <div>
-      Percentage of days with PM2.5 above Ambient Air Qualirt Standards
+      {label}: Percentage of days with PM2.5 above Ambient Air Qualirt Standards
       <hr />
     </div>
   );
