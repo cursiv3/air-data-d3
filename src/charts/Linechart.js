@@ -36,7 +36,7 @@ class Linechart extends React.Component {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <Line
-            dataKey="Multnomah"
+            dataKey="value"
             type="monotone"
             stroke="black"
             fill="black"

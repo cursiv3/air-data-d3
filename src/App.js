@@ -4,10 +4,9 @@ import Linechart from "./charts/Linechart";
 import Areachart from "./charts/Areachart";
 import Buttons from "./components/Buttons";
 import { filterByYear } from "./helpers/filterByYear";
-import { createStateArray } from "./helpers/createStateArray";
-import { filterResults } from "./helpers/filterResults";
 import { formatChartData } from "./helpers/formatChartData";
 import LoadingChart from "./charts/LoadingChart";
+import { filterByCounty } from "./helpers/filterByCounty";
 
 const axios = require("axios");
 
@@ -28,18 +27,12 @@ class App extends Component {
   componentDidMount() {
     axios
       .get(
-        "https://data.cdc.gov/api/views/cjae-szjv/rows.json?accessType=DOWNLOAD"
+        "https://data.cdc.gov/resource/nccy-exrp.json?statename=Oregon&unitname=Percent&$limit=200000"
       )
       .then(res => {
-        var filtered = filterResults(res.data.data);
-        var stateArray = createStateArray(filtered);
-        var stateObj = filterByYear(stateArray);
-        this.setState({ data: stateObj });
-      })
-      .then(data => {
-        let chartData = formatChartData(this.state.data);
-        chartData.isDataReceived = true;
-        this.setState(chartData);
+        var counties = filterByCounty(res.data);
+        console.log("************************", counties);
+        this.setState({ data: res.data, isDataReceived: true });
       });
   }
 
@@ -68,7 +61,7 @@ class App extends Component {
         )}
         {this.state.isDataReceived ? (
           <Linechart
-            data={this.state.percent}
+            data={this.state.data}
             isDataReceived={this.state.isDataReceived}
           />
         ) : (
@@ -80,7 +73,7 @@ class App extends Component {
             className="area-chart-modal-container"
             onClick={evt => this.modalClose()}
           >
-            <Areachart data={this.state.percent} focus={this.state.focus} />
+            <Areachart data={this.state.data} focus={this.state.focus} />
           </div>
         )}
 

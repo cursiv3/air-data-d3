@@ -1,18 +1,18 @@
 import { filterByCounty } from "./filterByCounty";
 
-export const filterByYear = objArray => {
+export const filterByYear = arr => {
   var years = [];
-  objArray.forEach(obj => {
-    if (years.indexOf(obj.year) === -1) {
-      years.push(obj.year);
+  arr.forEach(obj => {
+    if (years.indexOf(obj.reportyear) === -1) {
+      years.push(obj.reportyear);
     }
   });
-  var counties = filterByCounty(objArray);
+  var counties = filterByCounty(arr);
   let returnObj = {};
   years.forEach(year => {
     returnObj[year] = [];
     counties.forEach(obj => {
-      if (obj.year === year) {
+      if (obj.reportyear === year) {
         returnObj[year].push(obj);
       }
     });

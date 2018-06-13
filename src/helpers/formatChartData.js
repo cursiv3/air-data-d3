@@ -1,4 +1,5 @@
 export const formatChartData = state => {
+  console.log(state);
   let chartData = {
     percent: [],
     microgram: []
