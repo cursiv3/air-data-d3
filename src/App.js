@@ -4,7 +4,7 @@ import Linechart from "./charts/Linechart";
 import Areachart from "./charts/Areachart";
 import Buttons from "./components/Buttons";
 import { filterByYear } from "./helpers/filterByYear";
-import { formatChartData } from "./helpers/formatChartData";
+import { sortChartData } from "./helpers/sortChartData";
 import LoadingChart from "./charts/LoadingChart";
 import { filterByCounty } from "./helpers/filterByCounty";
 
@@ -30,9 +30,10 @@ class App extends Component {
         "https://data.cdc.gov/resource/nccy-exrp.json?statename=Oregon&unitname=Percent&$limit=200000"
       )
       .then(res => {
-        var counties = filterByCounty(res.data);
-        console.log("************************", counties);
-        this.setState({ data: res.data, isDataReceived: true });
+        let counties = filterByCounty(res.data);
+        let filteredData = filterByYear(counties);
+        let chartData = sortChartData(filteredData);
+        this.setState({ data: chartData, isDataReceived: true });
       });
   }
 
