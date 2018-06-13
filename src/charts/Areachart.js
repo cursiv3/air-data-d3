@@ -10,6 +10,7 @@ import {
   ResponsiveContainer
 } from "recharts";
 import "./charts.css";
+import { formatData, formatLabel } from "../helpers/chartHelpers";
 
 class Areachart extends React.Component {
   render() {
@@ -34,7 +35,11 @@ class Areachart extends React.Component {
         break;
     }
     return (
-      <ResponsiveContainer width="100%" height="60%">
+      <ResponsiveContainer
+        width="95%"
+        height="60%"
+        className="linechart-parent"
+      >
         <AreaChart
           data={this.props.data}
           className="modal-area-chart"
@@ -65,7 +70,11 @@ class Areachart extends React.Component {
             wrapperStyle={{ opacity: 0 }}
             verticalAlign="top"
           />
-          <Tooltip offset={50} />
+          <Tooltip
+            offset={50}
+            formatter={formatData}
+            labelFormatter={formatLabel}
+          />
         </AreaChart>
       </ResponsiveContainer>
     );

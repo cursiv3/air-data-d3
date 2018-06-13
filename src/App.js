@@ -64,6 +64,7 @@ class App extends Component {
           <Linechart
             data={this.state.data}
             isDataReceived={this.state.isDataReceived}
+            className="linechart-parent"
           />
         ) : (
           <LoadingChart />

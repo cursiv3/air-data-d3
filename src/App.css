@@ -23,6 +23,12 @@ body,
   z-index: 1;
 }
 
+.linechart-parent {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .data-loading-h1 {
   position: absolute;
   top: 30%;

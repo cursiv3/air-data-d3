@@ -11,24 +11,16 @@ import {
   Label
 } from "recharts";
 import "./charts.css";
-
-const formatData = value => {
-  return `${parseFloat(value).toFixed(2)}%`;
-};
-
-const formatLabel = label => {
-  return (
-    <div>
-      {label}: Percentage of days with PM2.5 above Ambient Air Qualirt Standards
-      <hr />
-    </div>
-  );
-};
+import { formatData, formatLabel } from "../helpers/chartHelpers";
 
 class Linechart extends React.Component {
   render() {
     return (
-      <ResponsiveContainer width="100%" height="60%">
+      <ResponsiveContainer
+        width="95%"
+        height="60%"
+        className="linechart-parent"
+      >
         <LineChart
           data={this.props.data}
           className="line-chart"
