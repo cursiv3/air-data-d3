@@ -44,6 +44,7 @@ class Linechart extends React.Component {
             type="monotone"
             stroke="#ef8354"
             fill="#ef8354"
+            activeDot={{ r: 8 }}
             strokeWidth={2}
           />
           <Line
@@ -51,6 +52,7 @@ class Linechart extends React.Component {
             type="monotone"
             stroke="#df3b57"
             fill="#df3b57"
+            activeDot={{ r: 8 }}
             strokeWidth={2}
           />
           <Line
@@ -58,6 +60,7 @@ class Linechart extends React.Component {
             type="monotone"
             stroke="#8a6951"
             fill="#8a6951"
+            activeDot={{ r: 8 }}
             strokeWidth={2}
           />
           <Line
@@ -65,6 +68,7 @@ class Linechart extends React.Component {
             type="monotone"
             stroke="#0f7173"
             fill="#0f7173"
+            activeDot={{ r: 8 }}
             strokeWidth={2}
           />
           <XAxis dataKey="year">
