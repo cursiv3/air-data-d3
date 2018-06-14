@@ -6,10 +6,16 @@
   z-index: 5;
 }
 
-.line-chart {
+.linechart-parent,
+.area-chart-parent {
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
+  top: 10px;
+  transform: translateX(-50%);
+  border: 2px solid silver;
+  border-radius: 5px;
+}
+
+.linechart-parent {
+  background-color: white;
 }

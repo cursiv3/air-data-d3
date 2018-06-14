@@ -17,19 +17,19 @@ class Areachart extends React.Component {
     var fill;
     switch (this.props.focus) {
       case "Multnomah":
-        fill = "black";
+        fill = "#2c0e14";
         break;
       case "Washington":
-        fill = "orange";
+        fill = "#ef8354";
         break;
       case "Marion":
-        fill = "red";
+        fill = "#df3b57";
         break;
       case "Yamhill":
-        fill = "blue";
+        fill = "#8a6951";
         break;
       case "Clackamas":
-        fill = "green";
+        fill = "#0f7173";
         break;
       default:
         break;
@@ -38,12 +38,12 @@ class Areachart extends React.Component {
       <ResponsiveContainer
         width="95%"
         height="60%"
-        className="linechart-parent"
+        className="area-chart-parent"
       >
         <AreaChart
           data={this.props.data}
           className="modal-area-chart"
-          margin={{ bottom: 20 }}
+          margin={{ bottom: 20, left: 25, right: 25 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <Area

@@ -27,7 +27,7 @@ class App extends Component {
   componentDidMount() {
     axios
       .get(
-        "https://data.cdc.gov/resource/nccy-exrp.json?statename=Oregon&unitname=Percent&$limit=200000"
+        "https://data.cdc.gov/resource/nccy-exrp.json?statename=Oregon&unitname=Percent&$limit=220000"
       )
       .then(res => {
         let counties = filterByCounty(res.data);

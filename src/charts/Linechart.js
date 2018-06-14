@@ -15,6 +15,7 @@ import { formatData, formatLabel } from "../helpers/chartHelpers";
 
 class Linechart extends React.Component {
   render() {
+    console.log(this.props.data);
     return (
       <ResponsiveContainer
         width="95%"
@@ -24,43 +25,46 @@ class Linechart extends React.Component {
         <LineChart
           data={this.props.data}
           className="line-chart"
-          margin={{ bottom: 20 }}
+          margin={{ bottom: 20, left: 25, right: 25 }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid
+            strokeDasharray="3 3"
+            style={{ backgroundColor: "white" }}
+          />
           <Line
-            dataKey="countyname"
+            dataKey="Multnomah"
             type="monotone"
-            stroke="black"
-            fill="black"
+            stroke="#2c0e14"
+            fill="#2c0e14"
             activeDot={{ r: 8 }}
             strokeWidth={2}
           />
           <Line
             dataKey="Washington"
             type="monotone"
-            stroke="orange"
-            fill="orange"
+            stroke="#ef8354"
+            fill="#ef8354"
             strokeWidth={2}
           />
           <Line
             dataKey="Marion"
             type="monotone"
-            stroke="red"
-            fill="red"
+            stroke="#df3b57"
+            fill="#df3b57"
             strokeWidth={2}
           />
           <Line
             dataKey="Yamhill"
             type="monotone"
-            stroke="blue"
-            fill="skyblue"
+            stroke="#8a6951"
+            fill="#8a6951"
             strokeWidth={2}
           />
           <Line
             dataKey="Clackamas"
             type="monotone"
-            stroke="green"
-            fill="green"
+            stroke="#0f7173"
+            fill="#0f7173"
             strokeWidth={2}
           />
           <XAxis dataKey="year">
